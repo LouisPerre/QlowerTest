@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: qlower_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: crudDjango
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  django:
+    restart: always
+    build: ./dockerImage/django
+    container_name: qlower_django
+    depends_on:
+      - postgres
+    environment:
+      DEBUG: 'true'
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    tty: true
+    env_file: .env
+
+  react:
+    build:
+      context: ./django_crud_front
+    container_name: qlower_react
+    volumes:
+      - ./django_crud_front/:/app
+    ports:
+      - "3000:3000"
+    tty: true
+
+volumes:
+  data:

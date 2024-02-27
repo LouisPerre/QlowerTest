@@ -1,0 +1,73 @@
+@use 'style/_colors.scss';
+
+.tasksDiv {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.borderRotate {
+
+  border-radius: 10px;
+}
+
+.borderRotate.rouge {
+  -webkit-box-shadow: 5px 5px 20px 4px colors.$incorrect-color;
+  box-shadow: 5px 5px 20px 4px colors.$incorrect-color;
+}
+
+.borderRotate.vert {
+  -webkit-box-shadow: 5px 5px 20px 4px colors.$valid-color;
+  box-shadow: 5px 5px 20px 4px colors.$valid-color;
+}
+
+.addArticle, .editArticle {
+  position: fixed !important;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.goBackArrow {
+  position: fixed !important;
+  top: 2rem;
+  left: 2rem;
+}
+
+.addArticlePage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header, .body {
+  width: 100%;
+
+  p {
+    font-size: 20px;
+  }
+  span {
+    font-weight: 100;
+    font-size: 14px;
+  }
+}
+
+.loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
